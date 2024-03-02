@@ -114,10 +114,6 @@ class USBTransport(object):
             if self.__setup_device(dev):
                 logger.debug('Found USB PTP device {}'.format(dev))
                 yield
-        else:
-            message = 'No USB PTP device found.'
-            logger.error(message)
-            raise PTPError(message)
 
     def __acquire_camera(self, devs):
         '''From the cameras given, get the first one that does not fail'''
@@ -424,15 +420,6 @@ class USBTransport(object):
         '''Send PTP request without checking answer.'''
         # Don't modify original container to keep abstraction barrier.
         ptp = Container(**ptp_container)
-        # Don't send unused parameters
-        try:
-            while not ptp.Parameter[-1]:
-                ptp.Parameter.pop()
-                if len(ptp.Parameter) == 0:
-                    break
-        except IndexError:
-            # The Parameter list is already empty.
-            pass
 
         # Send request
         ptp['Type'] = 'Command'
