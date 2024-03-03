@@ -22,7 +22,7 @@ from construct import (
 )
 from threading import Thread, Event, RLock
 from six.moves.queue import Queue
-from hexdump import hexdump
+from hexdump2 import hexdump
 
 logger = logging.getLogger(__name__)
 
