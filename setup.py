@@ -38,7 +38,7 @@ setup(
     long_description=read('README.md'),
     name='ptpy',
     packages=find_packages(exclude=['tests', 'examples']),
-    setup_requires=['pytest-runner'],
+#    setup_requires=['pytest-runner'],
     tests_require=read('tests/requirements.txt'),
     url='https://github.com/Parrot-Developers/sequoia-ptpy',
     version='0.3.3',
